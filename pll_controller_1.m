@@ -32,12 +32,12 @@ A = A1*D + A2*(1-D);
 B = B1*D + B2*(1-D);
 %C = C1*D + C2*(1-D);
 
-X = -(A^(-1))*B*Vin;
+X = -(A^(-1))*B*Vin; %Calculates the steady-state operating point of the converter (inductor current and output voltage)
 X_ver = [Iin;Vo];
 
 s = tf('s');
 sI = [s 0 ;0 s];
-x_by_d = ((sI-A)^-1)*((A1-A2)*X + (B1-B2)*Vin);
+x_by_d = ((sI-A)^-1)*((A1-A2)*X + (B1-B2)*Vin); %Calculates the transfer function of the inductor current with respect to duty cycle (i_by_d)
 i_by_d = x_by_d(1);
 %v0_by_d = (C*((sI-A)^-1)*((A1-A2)*X + (B1-B2)*Vin)) + (C1-C2)*X;
 
